@@ -40,23 +40,24 @@ export class BooksController {
         return responseBodyLogin;
     };
 
-    async getBooks(): Promise<Books[]> {
+    async getBooks(): Promise<Books> {
         let endpoint = 'api/v1/books';
 
         const response = await fetch(this.urlApi + endpoint, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${this.token}`
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
             }
         });
 
-        if (response.status !== 201) {
+        console.log(`Statud code: ${response.status}`);
+        if (response.status !== 200) {
             console.log(`Response body: ${(await response.json()).message}`);
             throw new Error('No authenticated')
         };
 
-        const books:Books[] = await response.json();
+        const books: Books = await response.json();
         return books;
     }
 
