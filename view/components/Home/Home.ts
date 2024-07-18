@@ -23,7 +23,6 @@ export const Home = () => {
 
     main.append(formSection);
 
-
     return main;
 }
 
