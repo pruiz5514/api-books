@@ -4,20 +4,31 @@ import { BodyRequestLoginBooks } from '../../../model/Login.models';
 
 export const Home = (): HTMLElement => {
     const main = document.createElement("main") as HTMLElement;
+    main.className = "main-home";
 
     const formSection = document.createElement("section") as HTMLElement;
+    formSection.className = "login-section"
+
     const h1 = document.createElement("h1") as HTMLHeadElement;
+    h1.className = "login-title"
     h1.innerText = 'Riwi Books';
 
     const form = document.createElement("form") as HTMLFormElement;
+    form.className = "login-form"
+
     const emailInput = document.createElement("input") as HTMLInputElement;
     emailInput.setAttribute("type", "email");
     emailInput.setAttribute("placeholder", "correo electronico");
+    emailInput.className = "login-input";
+
     const passwordInput = document.createElement("input") as HTMLInputElement;
     passwordInput.setAttribute("type", "password");
     passwordInput.setAttribute("placeholder", "Contraseña");
+    passwordInput.className = "login-input";
+
     const submitButton = document.createElement("button") as HTMLButtonElement;
     submitButton.innerText = "Iniciar sesión";
+    submitButton.className = "login-button";
 
     formSection.append(h1, form);
 
@@ -41,6 +52,7 @@ export const Home = (): HTMLElement => {
             if (resultLogin.data.token) {
                 form.reset();
                 localStorage.setItem("token", resultLogin.data.token);
+                window.location.hash = "#/books";
             }
 
         } catch (e) {

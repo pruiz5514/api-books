@@ -1,30 +1,30 @@
 @import '/src/scss/style.scss';
 
-main{
+.main-home{
     min-height: 100vh;
     display: flex;
     align-items: center;
 
-    section{
+    .login-section{
         width: 30%;
         margin: 0 auto;
         padding: 50px 0;
         border: 2px solid #dbdbdb;
 
-        h1{
+        .login-title{
             margin-bottom: 50px;
             text-align: center;
             font-size: 30px;
         }
 
-        form{
+        .login-form{
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 30px;
             width: 100%;
         
-            input{
+            .login-input{
                 width: 80%;
                 height: 40px;
                 border-radius: 8px;
@@ -34,7 +34,7 @@ main{
                 font-size: 16px;
             }
 
-            button{
+            .login-button{
                 width: 150px;
                 height: 40px;
                 border: none;
