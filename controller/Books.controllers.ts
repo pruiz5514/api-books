@@ -1,4 +1,5 @@
 import { BodyRequestLoginBooks, BodyResponseLoginBooks } from "../model/Login.models";
+import { Books } from "../model/Books.model";
 
 export class BooksController {
     urlApi: string;
@@ -37,5 +38,26 @@ export class BooksController {
         console.log(`Result token: ${responseBodyLogin.data.token}`);
         this.token = responseBodyLogin.data.token;
         return responseBodyLogin;
+    };
+
+    async getBooks(): Promise<Books[]> {
+        let endpoint = 'api/v1/books';
+
+        const response = await fetch(this.urlApi + endpoint, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${this.token}`
+            }
+        });
+
+        if (response.status !== 201) {
+            console.log(`Response body: ${(await response.json()).message}`);
+            throw new Error('No authenticated')
+        };
+
+        const books:Books[] = await response.json();
+        return books;
     }
+
 }
