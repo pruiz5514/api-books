@@ -1,0 +1,36 @@
+@import '/src/scss/style.scss';
+
+.card-container{
+    width: 280px;
+    height: 280px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    .book-img{
+        width: 100%;
+        min-height: 185px;
+        margin-bottom: 15px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+    
+    .bookInfo-container{
+        width: 100%;
+        padding: 0 10px 20px 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .card-title{
+            font-size: 22px;
+        }
+    }
+}
+
+.card-container:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
