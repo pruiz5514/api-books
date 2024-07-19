@@ -9,7 +9,7 @@
         width: 30%;
         margin: 0 auto;
         padding: 50px 0;
-        border: 2px solid #dbdbdb;
+        border: 2px solid $borderGray;
 
         .login-title{
             margin-bottom: 50px;
@@ -28,7 +28,7 @@
                 width: 80%;
                 height: 40px;
                 border-radius: 8px;
-                border: 2px solid #dbdbdb;
+                border: 2px solid $borderGray;
                 padding: 0 10px;
                 background: $inputGray;
                 font-size: 16px;

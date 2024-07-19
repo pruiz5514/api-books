@@ -21,7 +21,7 @@ export const Header = (): HTMLElement => {
 
     const addBooksLi = document.createElement("li") as HTMLLIElement;
     const addBooksAnchor = document.createElement("a") as HTMLAnchorElement;
-    addBooksAnchor.href = "/#agregarLibros";
+    addBooksAnchor.href = "#/agregarLibros";
     addBooksAnchor.innerText = "Agregar libros"
     addBooksLi.append(addBooksAnchor);
 
