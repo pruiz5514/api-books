@@ -1,5 +1,5 @@
 import { BodyRequestLoginBooks, BodyResponseLoginBooks } from "../model/Login.models";
-import { Books } from "../model/Books.model";
+import { Books, BooksInfo } from "../model/Books.model";
 
 export class BooksController {
     urlApi: string;
@@ -41,7 +41,7 @@ export class BooksController {
     };
 
     async getBooks(): Promise<Books> {
-        let endpoint = 'api/v1/books';
+        let endpoint = 'api/v1/books?limit=1000';
 
         const response = await fetch(this.urlApi + endpoint, {
             method: 'GET',
@@ -61,4 +61,26 @@ export class BooksController {
         return books;
     }
 
+    async postBooks(bookData: BooksInfo): Promise<Books> {
+        let endpoint = 'api/v1/books';
+
+        const response = await fetch(this.urlApi + endpoint, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(bookData)
+        })
+
+        console.log(`Statud code: ${response.status}`);
+
+        if (response.status !== 201) {
+            console.log(`Response body: ${(await response.json()).message}`);
+            throw new Error('No authenticated')
+        };
+
+        const bookAdded: Books = await response.json();
+        return bookAdded;
+    }
 }
