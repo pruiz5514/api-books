@@ -52,7 +52,7 @@ export const Home = (): HTMLElement => {
             if (resultLogin.data.token) {
                 form.reset();
                 localStorage.setItem("token", resultLogin.data.token);
-                window.location.hash = "#/books";
+                window.location.hash = "#/libros";
             }
 
         } catch (e) {

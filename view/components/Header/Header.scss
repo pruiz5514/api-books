@@ -1,0 +1,48 @@
+@import '/src/scss/style.scss';
+
+header{
+    width: 100%;
+    height: 90px;
+    display: flex;
+    border-bottom: 2px solid #dbdbdb;
+
+    .leftSection-header{
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 60px;
+
+        .header-title{
+            font-size: 32px;
+        }
+    }
+
+    nav{
+        width: 50%;
+        display: flex;
+        justify-content: end;
+        padding-right: 60px;
+        align-items: center;
+
+        .nav-list{
+            display: flex;
+            list-style: none;
+            gap: 30px;
+
+            .signout{
+                color: #000080;
+            }
+
+        }
+
+        .nav-list li a {
+            text-decoration: none;
+            font-size: 20px;
+            color: $black;
+            font-weight: bold;
+        }
+
+        
+    }
+}
