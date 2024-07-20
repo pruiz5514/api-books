@@ -1,11 +1,10 @@
 @import '/src/scss/style.scss';
 
 .card-container{
-    width: 280px;
-    height: 315px;
+    width: 290px;
+    height: 350px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
 
@@ -36,6 +35,26 @@
         right: 10px;
         color: #9E9E9E;
         display: none;
+        cursor: pointer;
+    }
+
+    .card-button-container{
+        position: absolute;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        bottom: 15px;
+
+        .card-button{
+            width: 100px;
+            height: 32px;
+            border: none;
+            border-radius: 13px;
+            background: $lightBlue;
+            color: $white;
+            font-size: 16px;
+            cursor: pointer;
+        }
     }
 }
 

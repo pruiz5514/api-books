@@ -6,6 +6,7 @@ export const BooksCard = (props: BooksInfo): HTMLElement => {
 
     const card = document.createElement("article") as HTMLElement;
     card.className = "card-container";
+    card.setAttribute("card-id", `${id}`);
 
     const img = document.createElement("img") as HTMLImageElement;
     img.className = "book-img"
@@ -21,14 +22,20 @@ export const BooksCard = (props: BooksInfo): HTMLElement => {
     const authorP = document.createElement("p") as HTMLParagraphElement;
     authorP.innerText = author;
 
+    const cardButtonContainer = document.createElement("div") as HTMLElement;
+    cardButtonContainer.className = "card-button-container";
+    const buttonCard = document.createElement("button") as HTMLButtonElement;
+    buttonCard.innerText = "Ver más"
+    buttonCard.className = "card-button";
+    buttonCard.setAttribute("card-id", `${id}`);
+    cardButtonContainer.append(buttonCard);
+
     const crossContainer = document.createElement("span");
     crossContainer.className = "cross-container";
     crossContainer.innerHTML = `<i book-id = ${id} class="bi bi-x-circle-fill"></i>`;
 
     bookInfo.append(h3, authorP)
-    card.append(img, bookInfo, crossContainer);
-
-
+    card.append(img, bookInfo, cardButtonContainer, crossContainer);
 
     return card;
 }

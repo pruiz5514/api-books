@@ -9,7 +9,7 @@ export interface BooksInfo {
     author: string;
     description: string;
     summary: string;
-    publicationDate?: Date | null;
+    publicationDate?: Date;
     createdBy?: string;
     updatedBy?: null;
     deletedBy?: null;

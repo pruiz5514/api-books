@@ -18,7 +18,6 @@ export const BooksView = (): HTMLElement => {
 
     main.append(h1, section);
 
-
     document.addEventListener("click", async (event: Event) => {
         const booksController = new BooksController('http://190.147.64.47:5155/');
         const target = event.target as HTMLElement;
@@ -33,10 +32,14 @@ export const BooksView = (): HTMLElement => {
                 console.log(e);
                 console.log("No se pudo eleminar el libro");
             }
+        };
 
+        if (target.classList.contains("card-button")) {
+            const idCard = target.getAttribute("card-id");
+            if (idCard) {
+                localStorage.setItem("card-id", idCard);
+            }
         }
-
-
     })
 
     return main;
