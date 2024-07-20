@@ -23,7 +23,7 @@ export const BooksCard = (props: BooksInfo): HTMLElement => {
 
     const crossContainer = document.createElement("span");
     crossContainer.className = "cross-container";
-    crossContainer.innerHTML = `<i class="bi bi-x-circle-fill"></i>`;
+    crossContainer.innerHTML = `<i book-id = ${id} class="bi bi-x-circle-fill"></i>`;
 
     bookInfo.append(h3, authorP)
     card.append(img, bookInfo, crossContainer);

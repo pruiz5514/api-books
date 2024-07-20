@@ -27,7 +27,7 @@ export class BooksController {
         const url = this.urlApi + endpoint;
         const result = await fetch(url, regOptions);
 
-        console.log(`Statud code: ${result.status}`);
+        console.log(`Statud code postLogin: ${result.status}`);
 
         if (result.status !== 201) {
             console.log(`Response body: ${(await result.json()).message}`);
@@ -51,7 +51,7 @@ export class BooksController {
             }
         });
 
-        console.log(`Statud code: ${response.status}`);
+        console.log(`Statud code get: ${response.status}`);
         if (response.status !== 200) {
             console.log(`Response body: ${(await response.json()).message}`);
             throw new Error('No authenticated')
@@ -73,7 +73,7 @@ export class BooksController {
             body: JSON.stringify(bookData)
         })
 
-        console.log(`Statud code: ${response.status}`);
+        console.log(`Statud code postBook: ${response.status}`);
 
         if (response.status !== 201) {
             console.log(`Response body: ${(await response.json()).message}`);
@@ -82,5 +82,25 @@ export class BooksController {
 
         const bookAdded: Books = await response.json();
         return bookAdded;
+    }
+
+    async deteleBook(id: string): Promise<Books> {
+        let endpoint = `api/v1/books/${id}`;
+
+        const response = await fetch(this.urlApi + endpoint, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            }
+        })
+
+        console.log(`Statud code delete: ${response.status}`);
+        if (response.status !== 200) {
+            console.log(`Response body: ${(await response.json()).message}`);
+            throw new Error('No authenticated')
+        }
+        const bookDeleted: Books = await response.json();
+        return bookDeleted;
     }
 }
