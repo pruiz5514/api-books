@@ -58,6 +58,7 @@ export const AddBook = (): HTMLElement => {
         try {
             const resultPostBook = await booksController.postBooks(newBook);
             console.log(resultPostBook);
+            form.reset();
             alert("Se agrego el libro exitosamente");
         } catch (e) {
             console.log(e);

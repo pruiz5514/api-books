@@ -21,8 +21,14 @@ export const BooksCard = (props: BooksInfo): HTMLElement => {
     const authorP = document.createElement("p") as HTMLParagraphElement;
     authorP.innerText = author;
 
+    const crossContainer = document.createElement("span");
+    crossContainer.className = "cross-container";
+    crossContainer.innerHTML = `<i class="bi bi-x-circle-fill"></i>`;
+
     bookInfo.append(h3, authorP)
-    card.append(img, bookInfo);
+    card.append(img, bookInfo, crossContainer);
+
+
 
     return card;
 }
