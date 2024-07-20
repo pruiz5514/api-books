@@ -84,6 +84,31 @@ export const BookInfo = async (): Promise<HTMLElement> => {
 
     main.append(section, sectionForm);
 
+    form.addEventListener("submit", async (event: Event) => {
+        event.preventDefault();
+
+        const booksController = new BooksController('http://190.147.64.47:5155/');
+        const idBookToUpdate = localStorage.getItem("card-id")
+
+        const bookUpdate: BooksInfo = {
+            title: titleInput.value,
+            author: authorInput.value,
+            description: descriptionInput.value,
+            summary: summaryInput.value,
+        }
+
+        try {
+            const resultUpdateBook = await booksController.updateBook(`${idBookToUpdate}`, bookUpdate);
+            console.log(resultUpdateBook);
+            form.reset();
+            alert("Se actualizo el libro exitosamente");
+            window.location.href = "#/libros";
+        } catch (e) {
+            console.log(e);
+        }
+
+    })
+
     return main;
 };
 

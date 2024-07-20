@@ -102,4 +102,27 @@ export class BooksController {
         return bookDeleted;
     }
 
+    async updateBook(id: string, bookData: BooksInfo) {
+        let endpoint = `api/v1/books/${id}`;
+
+        const response = await fetch(this.urlApi + endpoint, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("token")}`
+            },
+            body: JSON.stringify(bookData)
+        })
+
+        console.log(`Statud code updateBook: ${response.status}`);
+
+        if (response.status !== 200) {
+            console.log(`Response body: ${(await response.json()).message}`);
+            throw new Error('No authenticated')
+        };
+
+        const bookUpdated: Books = await response.json();
+        return bookUpdated;
+    }
+
 }
