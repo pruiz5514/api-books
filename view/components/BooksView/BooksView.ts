@@ -30,7 +30,7 @@ export const BooksView = (): HTMLElement => {
 
             } catch (e) {
                 console.log(e);
-                console.log("No se pudo eleminar el libro");
+                alert("No se pudo eleminar el libro");
             }
         };
 
@@ -38,6 +38,7 @@ export const BooksView = (): HTMLElement => {
             const idCard = target.getAttribute("card-id");
             if (idCard) {
                 localStorage.setItem("card-id", idCard);
+                window.location.href = `#/${idCard}`
             }
         }
     })
@@ -49,7 +50,7 @@ const showBooks = async () => {
     const booksController = new BooksController('http://190.147.64.47:5155/');
 
     try {
-        const getBooks = await booksController.getBooks();
+        const getBooks = await booksController.getBooks('api/v1/books?limit=1000');
         return getBooks.data
     } catch (e) {
         console.log(e);

@@ -1,0 +1,86 @@
+@import '/src/scss/style.scss';
+
+.bookInfo-main{
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+
+    .bookInfo-container{
+        width: 800px;
+        border: 1px solid $borderGray;
+        padding: 50px 30px;
+        margin-bottom: 30px;
+
+        .imgInfo-contaiener{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        };
+
+        .bookDesc-container{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+    };
+
+
+    .addBook-form-container{
+        display: flex;
+        flex-direction: column;
+        width: 800px;
+        height: auto;
+        border: 2px solid $borderGray;
+        align-items: center;
+        padding: 40px 0;
+
+        .addBook-title{
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .addBook-form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .addBook-imput{
+            width: 80%;
+            height: 35px;
+            border-radius: 8px;
+            border: 2px solid $borderGray;
+            padding: 0 10px;
+            background: $inputGray;
+            font-size: 16px;
+        }
+
+        .addBook-textarea{
+            width: 80%;
+            height: 90px;
+            border-radius: 8px;
+            border: 2px solid $borderGray;
+            padding: 10px;
+            background: $inputGray;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .addBook-button{
+            width: 150px;
+            height: 40px;
+            border: none;
+            border-radius: 8px;
+            background: $lightBlue;
+            color: $white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    }
+}

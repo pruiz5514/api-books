@@ -40,9 +40,7 @@ export class BooksController {
         return responseBodyLogin;
     };
 
-    async getBooks(): Promise<Books> {
-        let endpoint = 'api/v1/books?limit=1000';
-
+    async getBooks(endpoint: String): Promise<Books> {
         const response = await fetch(this.urlApi + endpoint, {
             method: 'GET',
             headers: {
@@ -103,4 +101,5 @@ export class BooksController {
         const bookDeleted: Books = await response.json();
         return bookDeleted;
     }
+
 }

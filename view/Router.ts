@@ -2,8 +2,9 @@ import { Home } from './components/Home/Home'
 import { BooksView } from './components/BooksView/BooksView'
 import { Header } from './components/Header/Header'
 import { AddBook } from './components/AddBook/AddBook'
+import { BookInfo } from './components/BookInfo/BookInfo';
 
-export const Router = () => {
+export const Router = async () => {
     let { hash } = location;
 
     const divRoot = document.querySelector("#root") as HTMLElement;
@@ -18,5 +19,8 @@ export const Router = () => {
     }
     else if (hash == "#/agregarLibros") {
         divRoot.append(Header(), AddBook())
+    }
+    else {
+        divRoot.append(Header(), await BookInfo())
     }
 };
