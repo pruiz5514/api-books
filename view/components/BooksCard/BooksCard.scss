@@ -67,3 +67,11 @@
 .card-container:hover .cross-container{
     display: block;
 }
+
+@media (max-width: 1024px){
+    .card-container{
+        .cross-container{
+            display: block;
+        }
+    }
+}

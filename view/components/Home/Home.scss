@@ -6,7 +6,7 @@
     align-items: center;
 
     .login-section{
-        width: 30%;
+        width: 40%;
         margin: 0 auto;
         padding: 50px 0;
         border: 2px solid $borderGray;
@@ -43,6 +43,15 @@
                 color: $white;
                 font-size: 16px;
             }
+        }
+    }
+}
+
+@media (max-width: 900px){
+    .main-home{
+
+        .login-section{
+            width: 80%;
         }
     }
 }

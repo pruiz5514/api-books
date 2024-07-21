@@ -46,3 +46,20 @@ header{
         
     }
 }
+
+@media (max-width: 850px){
+    header{
+        .leftSection-header{
+            display: none;
+        }
+        nav{
+            width: 100%;
+            justify-content: center;
+            padding-right: 0;
+            
+            .nav-list{
+                gap: 20px;
+            }
+        }
+    }
+}
