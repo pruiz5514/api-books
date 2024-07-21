@@ -4,6 +4,11 @@ import { BooksInfo } from "../../../model/Books.model";
 
 export const BookInfo = async (): Promise<HTMLElement> => {
 
+    const token = localStorage.getItem("token");
+    if (token === null) {
+        window.location.hash = "/";
+    };
+
     const currentBook = await getCurrentBook();
     console.log(currentBook);
 

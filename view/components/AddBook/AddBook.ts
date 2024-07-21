@@ -3,9 +3,15 @@ import { BooksInfo } from '../../../model/Books.model';
 import './AddBook.scss';
 
 export const AddBook = (): HTMLElement => {
+
+    const token = localStorage.getItem("token");
+    if (token === null) {
+        window.location.hash = "/";
+    };
+    
     const main = document.createElement("main") as HTMLElement;
     main.className = "addBook-main";
-    
+
     const section = document.createElement("section") as HTMLElement;
     section.className = "addBook-form-container"
 

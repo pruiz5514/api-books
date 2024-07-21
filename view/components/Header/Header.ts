@@ -1,6 +1,7 @@
 import './Header.scss'
 
 export const Header = (): HTMLElement => {
+
     const header = document.createElement("header") as HTMLElement;
     const section = document.createElement("section") as HTMLElement;
     section.className = "leftSection-header";
@@ -36,5 +37,11 @@ export const Header = (): HTMLElement => {
     nav.append(ul);
     section.append(h1);
     header.append(section, nav)
+
+
+    signOutAnchor.addEventListener("click", () => {
+        localStorage.removeItem("token");
+    })
+
     return header
 }

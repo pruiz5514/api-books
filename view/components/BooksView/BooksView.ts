@@ -4,6 +4,12 @@ import { BooksCard } from '../BooksCard/BooksCard';
 
 
 export const BooksView = (): HTMLElement => {
+
+    const token = localStorage.getItem("token");
+    if (token === null) {
+        window.location.hash = "/";
+    }
+
     const main = document.createElement("main") as HTMLElement;
     main.className = "booksView-main";
 
@@ -30,7 +36,6 @@ export const BooksView = (): HTMLElement => {
 
             } catch (e) {
                 console.log(e);
-                alert("No se pudo eleminar el libro");
             }
         };
 
