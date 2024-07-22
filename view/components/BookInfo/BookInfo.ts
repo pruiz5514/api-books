@@ -2,16 +2,18 @@ import './BookInfo.scss'
 import { BooksController } from "../../../controller/Books.controllers";
 import { BooksInfo } from "../../../model/Books.model";
 
+
+// Component of the more specific information in the book, a form for editing information is also created.
 export const BookInfo = async (): Promise<HTMLElement> => {
 
+    // Guardian that identifies if there is an open session
     const token = localStorage.getItem("token");
     if (token === null) {
         window.location.hash = "/";
     };
 
+    // Function that obtains the information of the book;
     const currentBook = await getCurrentBook();
-    console.log(currentBook);
-
 
     const main = document.createElement("main") as HTMLElement;
     main.className = "bookInfo-main";
@@ -29,20 +31,20 @@ export const BookInfo = async (): Promise<HTMLElement> => {
     const article = document.createElement("article") as HTMLElement;
     article.className = "bookDesc-container";
     const bookTilte = document.createElement("h1") as HTMLHeadingElement;
-    bookTilte.innerText = currentBook?.title;
+    bookTilte.innerText = currentBook?.title ?? "Título no disponible";
 
     const author = document.createElement("p") as HTMLParagraphElement;
-    author.innerText = currentBook?.author;
+    author.innerText = currentBook?.author ?? "Autor no disponible";
 
     const descTitle = document.createElement("h3") as HTMLHeadingElement;
     descTitle.innerText = "Descripción";
     const description = document.createElement("p") as HTMLParagraphElement;
-    description.innerText = currentBook?.description;
+    description.innerText = currentBook?.description ?? "Descripción no disponible";
 
     const summTitle = document.createElement("h3") as HTMLHeadingElement;
     summTitle.innerText = "Resumen";
     const summary = document.createElement("p") as HTMLParagraphElement;
-    summary.innerText = currentBook?.summary;
+    summary.innerText = currentBook?.summary ?? "Resumen no disponible";
 
     article.append(bookTilte, author, descTitle, description, summTitle, summary);
     section.append(imgContainer, article)
@@ -50,6 +52,7 @@ export const BookInfo = async (): Promise<HTMLElement> => {
 
 
 
+    // Creation of the form
     const sectionForm = document.createElement("section") as HTMLElement;
     sectionForm.className = "addBook-form-container"
 
@@ -89,12 +92,15 @@ export const BookInfo = async (): Promise<HTMLElement> => {
 
     main.append(section, sectionForm);
 
+
+
     form.addEventListener("submit", async (event: Event) => {
         event.preventDefault();
 
         const booksController = new BooksController('http://190.147.64.47:5155/');
         const idBookToUpdate = localStorage.getItem("card-id")
 
+        // Information to update
         const bookUpdate: BooksInfo = {
             title: titleInput.value,
             author: authorInput.value,
@@ -103,6 +109,7 @@ export const BookInfo = async (): Promise<HTMLElement> => {
         }
 
         try {
+            // The class is instantiated and the method is executed to update the information.
             const resultUpdateBook = await booksController.updateBook(`${idBookToUpdate}`, bookUpdate);
             console.log(resultUpdateBook);
             form.reset();
@@ -117,13 +124,14 @@ export const BookInfo = async (): Promise<HTMLElement> => {
     return main;
 };
 
-async function getCurrentBook() {
+// Function that obtains the information of the book;
+async function getCurrentBook(): Promise<BooksInfo | undefined> {
     const bookId = localStorage.getItem("card-id");
 
     const booksController = new BooksController('http://190.147.64.47:5155/');
     try {
         const book = await booksController.getBooks(`api/v1/books/${bookId}`);
-        return book.data;
+        return book.data[0];
     } catch (e) {
         console.log(e);
         alert("No se puede mostrar el libro, intente de nuevo");

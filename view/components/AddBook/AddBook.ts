@@ -2,13 +2,16 @@ import { BooksController } from '../../../controller/Books.controllers';
 import { BooksInfo } from '../../../model/Books.model';
 import './AddBook.scss';
 
+
+// Component of the form that creates books
 export const AddBook = (): HTMLElement => {
 
+    // Guardian that identifies if there is an open session
     const token = localStorage.getItem("token");
     if (token === null) {
         window.location.hash = "/";
     };
-    
+
     const main = document.createElement("main") as HTMLElement;
     main.className = "addBook-main";
 
@@ -55,6 +58,7 @@ export const AddBook = (): HTMLElement => {
 
         const booksController = new BooksController('http://190.147.64.47:5155/');
 
+        // Information of the book to post 
         const newBook: BooksInfo = {
             title: titleInput.value,
             author: authorInput.value,
@@ -63,6 +67,7 @@ export const AddBook = (): HTMLElement => {
         }
 
         try {
+            // The class is instantiated and the method is executed to post the new books.
             const resultPostBook = await booksController.postBooks(newBook);
             console.log(resultPostBook);
             form.reset();

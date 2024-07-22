@@ -1,5 +1,6 @@
 import './Header.scss'
 
+// Component of header
 export const Header = (): HTMLElement => {
 
     const header = document.createElement("header") as HTMLElement;

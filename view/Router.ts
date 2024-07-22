@@ -4,6 +4,8 @@ import { Header } from './components/Header/Header'
 import { AddBook } from './components/AddBook/AddBook'
 import { BookInfo } from './components/BookInfo/BookInfo';
 
+// Path file, according to the path each component is rendered.
+
 export const Router = async () => {
     let { hash } = location;
 

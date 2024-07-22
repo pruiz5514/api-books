@@ -1,3 +1,5 @@
+// Interface of login response
+
 export interface BodyRequestLoginBooks {
     email: string,
     password: string

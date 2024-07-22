@@ -1,3 +1,5 @@
+// Interface of books response
+
 export interface Books {
     message: string;
     data: BooksInfo[];

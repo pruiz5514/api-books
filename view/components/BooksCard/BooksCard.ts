@@ -1,6 +1,7 @@
 import './BooksCard.scss';
 import { BooksInfo } from "../../../model/Books.model";
 
+// Component that creates each letter with the information of the book.
 export const BooksCard = (props: BooksInfo): HTMLElement => {
     let { id, title, author } = props
 

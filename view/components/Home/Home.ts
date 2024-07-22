@@ -2,7 +2,10 @@ import './Home.scss';
 import { BooksController } from '../../../controller/Books.controllers';
 import { BodyRequestLoginBooks } from '../../../model/Login.models';
 
+
+// Component of the log in section
 export const Home = (): HTMLElement => {
+    // Creation of login section
     const main = document.createElement("main") as HTMLElement;
     main.className = "main-home";
 
@@ -37,6 +40,7 @@ export const Home = (): HTMLElement => {
     main.append(formSection);
 
 
+    // Event to send the form and get the token
     form.addEventListener("submit", async (event: Event) => {
         event.preventDefault();
 

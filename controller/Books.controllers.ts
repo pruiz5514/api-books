@@ -1,6 +1,7 @@
 import { BodyRequestLoginBooks, BodyResponseLoginBooks } from "../model/Login.models";
 import { Books, BooksInfo } from "../model/Books.model";
 
+// Class that makes the requests to the api, this contains the methods GET, POST, DELETE and PATCH
 export class BooksController {
     urlApi: string;
     token: string | null
@@ -10,6 +11,7 @@ export class BooksController {
         this.token = null
     };
 
+    // Method to log in
     async postLogin(data: BodyRequestLoginBooks) {
         let endpoint = "api/v1/auth/login";
 
@@ -40,6 +42,7 @@ export class BooksController {
         return responseBodyLogin;
     };
 
+    //Method to get the books
     async getBooks(endpoint: String): Promise<Books> {
         const response = await fetch(this.urlApi + endpoint, {
             method: 'GET',
@@ -59,6 +62,7 @@ export class BooksController {
         return books;
     }
 
+    // Method to post a book;
     async postBooks(bookData: BooksInfo): Promise<Books> {
         let endpoint = 'api/v1/books';
 
@@ -82,6 +86,7 @@ export class BooksController {
         return bookAdded;
     }
 
+    // Method to delete a book
     async deteleBook(id: string): Promise<Books> {
         let endpoint = `api/v1/books/${id}`;
 
@@ -102,6 +107,7 @@ export class BooksController {
         return bookDeleted;
     }
 
+    // Method to update the information of a book
     async updateBook(id: string, bookData: BooksInfo) {
         let endpoint = `api/v1/books/${id}`;
 
