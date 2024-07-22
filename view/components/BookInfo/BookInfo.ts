@@ -31,20 +31,20 @@ export const BookInfo = async (): Promise<HTMLElement> => {
     const article = document.createElement("article") as HTMLElement;
     article.className = "bookDesc-container";
     const bookTilte = document.createElement("h1") as HTMLHeadingElement;
-    bookTilte.innerText = currentBook?.title ?? "Título no disponible";
+    bookTilte.innerText = currentBook?.title;
 
     const author = document.createElement("p") as HTMLParagraphElement;
-    author.innerText = currentBook?.author ?? "Autor no disponible";
+    author.innerText = currentBook?.author;
 
     const descTitle = document.createElement("h3") as HTMLHeadingElement;
     descTitle.innerText = "Descripción";
     const description = document.createElement("p") as HTMLParagraphElement;
-    description.innerText = currentBook?.description ?? "Descripción no disponible";
+    description.innerText = currentBook?.description;
 
     const summTitle = document.createElement("h3") as HTMLHeadingElement;
     summTitle.innerText = "Resumen";
     const summary = document.createElement("p") as HTMLParagraphElement;
-    summary.innerText = currentBook?.summary ?? "Resumen no disponible";
+    summary.innerText = currentBook?.summary;
 
     article.append(bookTilte, author, descTitle, description, summTitle, summary);
     section.append(imgContainer, article)
@@ -125,13 +125,13 @@ export const BookInfo = async (): Promise<HTMLElement> => {
 };
 
 // Function that obtains the information of the book;
-async function getCurrentBook(): Promise<BooksInfo | undefined> {
+async function getCurrentBook() {
     const bookId = localStorage.getItem("card-id");
 
     const booksController = new BooksController('http://190.147.64.47:5155/');
     try {
         const book = await booksController.getBooks(`api/v1/books/${bookId}`);
-        return book.data[0];
+        return book.data;
     } catch (e) {
         console.log(e);
         alert("No se puede mostrar el libro, intente de nuevo");
