@@ -6,7 +6,7 @@ Taller de consumos de API
 
 Entrar a la rama feature/03-header
 Clonar el repositorio
-git clone https://github.com/nubenunca/Jomchores.git
+git clone https://github.com/pruiz5514/api-books.git
 
 # Instalar las dependencias
 
